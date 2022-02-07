@@ -1,0 +1,191 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+
+#
+# Homebrew
+#
+
+# Init
+# ARM and Intel have differing locations
+if [[ $(uname -p) == 'arm' ]]; then
+  eval "$(/opt/Homebrew/bin/brew shellenv)"
+else
+  eval "$(/usr/local/Homebrew/bin/brew shellenv)"
+fi
+
+# Flags
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/curl/lib"                  # Curl
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/curl/include"             # Curl
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig"  # Curl
+
+# Homebrew app overrides
+path=(
+  $HOMEBREW_PREFIX/opt/curl/bin # Curl
+  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin # GNU utils
+  $path
+)
+manpath=(
+  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman # GNU utils
+  $manpath
+)
+
+#
+# Completion
+#
+
+# Enable the "new" completion system (compsys).
+function zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
+}
+
+autoload -Uz compinit && compinit
+[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile-many ~/.zcompdump
+unfunction zcompile-many
+
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+#
+# Zinit
+#
+
+# Activate Zinit
+source $HOMEBREW_PREFIX/opt/zinit/zinit.zsh
+
+# Zinit Plugins
+zinit for \
+  light-mode atload'source ~/.p10k.zsh' romkatv/powerlevel10k \
+  light-mode zdharma-continuum/fast-syntax-highlighting \
+  light-mode zsh-users/zsh-history-substring-search \
+  light-mode zsh-users/zsh-autosuggestions \
+  light-mode momo-lab/zsh-replace-multiple-dots \
+  light-mode hlissner/zsh-autopair \
+  light-mode zpm-zsh/ls \
+  light-mode zpm-zsh/material-colors \
+  light-mode chitoku-k/fzf-zsh-completions \
+  light-mode Aloxaf/fzf-tab \
+  light-mode wfxr/emoji-cli \
+  light-mode from'gh-r' as'program' sei40kr/fast-alias-tips-bin \
+  light-mode sei40kr/zsh-fast-alias-tips \
+  light-mode pick'zsh-bench' as'program' romkatv/zsh-bench \
+  light-mode lucid wait'[[ -s .git ]]' unload'[[ ! -s .git ]]' wfxr/forgit \
+
+# TODO: Replace prezto modules
+# zinit snippet PZTM::ssh
+# zinit snippet PZTM::gnu-utility
+# zinit snippet PZTM::gpg
+# zinit snippet PZTM::utility
+
+# zinit ice svn
+# zinit snippet PZTM::git
+
+# zinit ice svn
+# zinit snippet PZTM::docker
+
+
+#
+# Aliases
+#
+
+alias v='nvim'
+alias vs='code'
+alias brewU='brew update && brew upgrade && brew upgrade --cask && brew cleanup'
+alias brewc='brew cleanup'
+alias brewi='brew install'
+alias brewL='brew leaves'
+alias brewl='brew list'
+alias brewo='brew outdated'
+alias brews='brew search'
+alias brewu='brew upgrade'
+alias brewx='brew uninstall'
+alias caski='brew install --cask'
+alias caskl='brew list --cask'
+alias casko='brew outdated --cask'
+alias casks='brew search --cask'
+alias casku='brew upgrade --cask'
+alias caskx='brew uninstall --cask'
+
+#
+# Tools
+#
+
+# iTerm: Terminal integration
+if [[ $TERM_PROGRAM == iTerm.app ]]; then
+  source "${HOME}/.iterm2_shell_integration.zsh"
+fi
+
+# fzf: Fuzzy Finder
+source ~/.fzf.zsh
+
+# Autojump: Quck directory navigation
+source $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
+
+# Direnv: Autoload .env files
+eval "$(direnv hook zsh)"
+
+# asdf: Tool version manager
+source /opt/Homebrew/opt/asdf/libexec/asdf.sh
+
+#
+# Zsh options
+#
+
+# Completion
+setopt ALWAYS_TO_END    # Move cursor to the end of a completed word.
+setopt AUTO_LIST        # Automatically list choices on ambiguous completion.
+setopt AUTO_MENU        # Show completion menu on a successive tab press.
+setopt AUTO_PARAM_SLASH # If completed parameter is a directory, add a trailing slash.
+setopt COMPLETE_IN_WORD # Complete from both ends of a word.
+setopt EXTENDED_GLOB    # Needed for file modification glob modifiers with compinit.
+setopt PATH_DIRS        # Perform path search even on command names with slashes.
+unsetopt FLOW_CONTROL   # Disable start/stop characters in shell editor.
+unsetopt MENU_COMPLETE  # Do not autoselect the first completion entry.
+# Use caching to make completion for commands such as dpkg and apt usable.
+zstyle ':completion::complete:*' use-cache on
+
+# History
+HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}"  # The path to the history file.
+HISTSIZE=10000                # The maximum number of events to save in the internal history.
+SAVEHIST=10000                # The maximum number of events to save in the history file.
+setopt BANG_HIST              # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_BEEP              # Beep when accessing non-existent history.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE      # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
+setopt SHARE_HISTORY          # Share history between all sessions.
+
+# History Substring Search
+bindkey '^[[A' history-substring-search-up          # Up arrow to go back
+bindkey '^[[B' history-substring-search-down        # Down arrow to go forward
+bindkey -M vicmd "k" history-substring-search-up    # Vi nav back
+bindkey -M vicmd "j" history-substring-search-down  # Vi nav forward
+
+# Misc
+bindkey -v                  # Enable vi navigation on command line
+setopt AUTO_CD              # Don't require `cd` for directory change.
+setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
+setopt AUTO_RESUME          # Attempt to resume existing job before creating a new process.
+setopt CDABLE_VARS          # Change directory to a path stored in a variable.
+setopt COMBINING_CHARS      # Combine zero-length punctuation characters (accents) with the base character.
+setopt EXTENDED_GLOB        # Use extended globbing syntax.
+setopt INTERACTIVE_COMMENTS # Enable comments in interactive shell.
+setopt LONG_LIST_JOBS       # List jobs in the long format by default.
+setopt MULTIOS              # Write to multiple descriptors.
+setopt NOTIFY               # Report status of background jobs immediately.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+setopt PUSHD_TO_HOME        # Push to home directory when no argument is given.
+setopt RC_QUOTES            # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'.
+typeset -gU cdpath fpath mailpath path  # Ensure path arrays do not contain duplicates.
+unsetopt BG_NICE            # Don't run all background jobs at a lower priority.
+unsetopt CHECK_JOBS         # Don't report on jobs when shell exit.
+unsetopt CLOBBER            # Do not overwrite existing files with > and >>. Use >! and >>! to bypass.
+unsetopt HUP                # Don't kill jobs on shell exit.
+
