@@ -1,0 +1,12 @@
+# Editors
+export EDITOR='nvim'
+export VISUAL=$EDITOR
+export PAGER='less'
+
+# Language
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+# # Security
+# export GPG_TTY=$(tty) # Prevents GPG error
