@@ -8,5 +8,5 @@ if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
-# # Security
-# export GPG_TTY=$(tty) # Prevents GPG error
+# Security
+export GPG_TTY=$(tty) # Prevents GPG error
