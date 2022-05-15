@@ -8,7 +8,7 @@ if [[ $isZsh == 'y' ]]; then
 
   backup_dir=${HOME}/zsh-backup-$(date +%s)
 
-  for rcfile in "${ZDOTDIR:-$HOME}"/bzsh/runcoms/^README.md; do
+  for rcfile in "${ZDOTDIR:-$HOME}"/.bzsh/runcoms/^README.md; do
     if [[ -s $HOME/.${rcfile:t} ]]; then
       echo "${rcfile:t} already exists. Moving existing file to backup directory: ${backup_dir}..."
       if ! [[ -s ${backup_dir:t} ]]; then
