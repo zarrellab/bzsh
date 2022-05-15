@@ -146,6 +146,40 @@ if [[ $isSSH == 'y' ]]; then
     IdentityFile ~/.ssh/id_ed25519" >>~/.ssh/config
 fi
 
+vared -p 'Configure gpg? [y/n]: ' -c isGPG
+echo
+
+if [[ $isGPG == 'y' ]]; then
+  vared -p 'Create new gpg? [y/n]: ' -c isNewGPG
+  echo
+
+  if [[ $isNewGPG == 'y' ]]; then
+    echo 'Generating gpg key...'
+    gpg --full-generate-key
+
+    signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
+    gpg --export-secret-keys $signkey >~/gpg-bu.asc
+    echo 'gpg private saved to home. Back this up somewhere secure!'
+    read -s -k 'Press any key to continue...'
+  fi
+
+  vared -p 'Import gpg? [y/n]: ' -c isImportGPG
+  echo
+
+  if [[ $isImportGPG == 'y' ]]; then
+    echo 'Enter your gpg key file with path:'
+    read gpg_file
+
+    gpg --import $gpg_file
+
+    signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
+  fi
+
+  gpg --armor --export $signkey | pbcopy
+  echo 'gpg public key has been copied to clipboard. Save this!'
+  read -s -k 'Press any key to continue...'
+fi
+
 vared -p 'Configure git? [y/n]: ' -c isGit
 echo
 
@@ -156,8 +190,11 @@ if [[ $isGit == 'y' ]]; then
   echo 'Enter your email:'
   read email
 
-  echo 'Enter your gpg signkey:'
-  read signkey
+  # If signkey isn't saved from gpg generation
+  if [[ -z $signkey ]]; then
+    echo 'Enter your gpg signkey:'
+    read signkey
+  fi
 
   git config --global user.name $name
   git config --global user.email $email
