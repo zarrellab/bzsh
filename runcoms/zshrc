@@ -16,18 +16,18 @@ else
 fi
 
 # Flags
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/curl/lib"                  # Curl
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/curl/include"             # Curl
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig"  # Curl
+export LDFLAGS="-L$(brew --prefix)/opt/curl/lib"                  # Curl
+export CPPFLAGS="-I$(brew --prefix)/opt/curl/include"             # Curl
+export PKG_CONFIG_PATH="$(brew --prefix)/opt/curl/lib/pkgconfig"  # Curl
 
 # Homebrew app overrides
 path=(
-  $HOMEBREW_PREFIX/opt/curl/bin # Curl
-  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin # GNU utils
+  "$(brew --prefix)/opt/curl/bin" # Curl
+  "$(brew --prefix)/opt/coreutils/libexec/gnubin" # GNU utils
   $path
 )
 manpath=(
-  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman # GNU utils
+  "$(brew --prefix)/opt/coreutils/libexec/gnuman" # GNU utils
   $manpath
 )
 
@@ -52,7 +52,7 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 #
 
 # Activate Zinit
-source $HOMEBREW_PREFIX/opt/zinit/zinit.zsh
+source "$(brew --prefix)/opt/zinit/zinit.zsh"
 
 # Zinit Plugins
 zinit for \
@@ -120,13 +120,13 @@ fi
 source ~/.fzf.zsh
 
 # Autojump: Quck directory navigation
-source $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
+source "$(brew --prefix)/etc/profile.d/autojump.sh"
 
 # Direnv: Autoload .env files
 eval "$(direnv hook zsh)"
 
 # asdf: Tool version manager
-source /opt/Homebrew/opt/asdf/libexec/asdf.sh
+source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 
 #
 # Zsh options
@@ -188,4 +188,3 @@ unsetopt BG_NICE            # Don't run all background jobs at a lower priority.
 unsetopt CHECK_JOBS         # Don't report on jobs when shell exit.
 unsetopt CLOBBER            # Do not overwrite existing files with > and >>. Use >! and >>! to bypass.
 unsetopt HUP                # Don't kill jobs on shell exit.
-
