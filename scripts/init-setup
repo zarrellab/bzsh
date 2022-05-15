@@ -60,6 +60,7 @@ if [[ $isNecassary == 'y' ]]; then
     htop \
     iterm2 \
     neovim \
+    pinentry-mac \
     python \
     shellcheck \
     subversion \
@@ -125,6 +126,9 @@ if [[ $isNecassary == 'y' ]]; then
   # Install the default version of scala
   asdf install scala latest
   asdf global scala latest
+
+  echo 'Configuring gpg...'
+  echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >>~/.gnupg/gpg-agent.conf
 fi
 
 echo 'Creating ~/.zshprivate for private env variables...'
@@ -152,10 +156,16 @@ if [[ $isGit == 'y' ]]; then
   echo 'Enter your email:'
   read email
 
+  echo 'Enter your gpg signkey:'
+  read signkey
+
   git config --global user.name $name
   git config --global user.email $email
   git config --global core.editor nvim
   git config --global init.defaultBranch main
+  git config --global commit.gpgsign true
+  git config --global gpg.program $(brew --prefix)/bin/gpg
+  git config --global user.signkey $signkey
 
   echo '============================'
   echo 'Here is your git config:'
