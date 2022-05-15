@@ -184,6 +184,7 @@ if [[ $isRecommendedDev == 'y' ]]; then
   brew install \
     1password \
     1password-cli \
+    aha \
     awscli \
     brotli \
     cmake \
@@ -242,7 +243,6 @@ if [[ $isPersonal == 'y' ]]; then
   brew tap homebrew/cask-drivers
 
   brew install \
-    aha \
     discord \
     epic-games \
     mas \
@@ -250,12 +250,14 @@ if [[ $isPersonal == 'y' ]]; then
     transmission-cli
 
   brew install --cask \
+    adobe-creative-cloud \
     cinebench \
     monitorcontrol \
     mouse-fix \
     obsidian \
     transmission \
-    vlc
+    vlc \
+    zoom
 
   echo 'Checking for issues...'
   brew doctor
