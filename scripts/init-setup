@@ -50,11 +50,13 @@ if [[ $isNecassary == 'y' ]]; then
     bat \
     coreutils \
     curl \
+    direnv \
     font-sauce-code-pro-nerd-font \
     fzf \
     gawk \
     git \
-    gpg \
+    gnupg \
+    gnutls \
     htop \
     iterm2 \
     neovim \
@@ -116,6 +118,13 @@ if [[ $isNecassary == 'y' ]]; then
   # Install the default version of rust
   asdf install rust latest
   asdf global rust latest
+
+  echo 'Installing scala...'
+  # Install scala version manager
+  asdf plugin-add scala
+  # Install the default version of scala
+  asdf install scala latest
+  asdf global scala latest
 fi
 
 echo 'Creating ~/.zshprivate for private env variables...'
@@ -173,8 +182,8 @@ if [[ $isRecommendedDev == 'y' ]]; then
     firefox \
     firefox-developer-edition \
     gifox \
-    gnupg \
     google-chrome \
+    helm \
     htop \
     imagemagick \
     imageoptim-cli \
@@ -197,7 +206,11 @@ if [[ $isRecommendedDev == 'y' ]]; then
     vagrant \
     visual-studio-code \
     watch \
+    watchman \
     wget
+
+  brew install --cask \
+    rectangle
 
   echo 'Checking for issues...'
   brew doctor
@@ -207,41 +220,6 @@ if [[ $isRecommendedDev == 'y' ]]; then
   echo 'Installing iterm utils...'
   # iterm shell integration
   curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | zsh
-
-  echo 'Installing mongodb...'
-  # Install mongodb version manager
-  asdf plugin-add mongodb
-  # Install the default version of mongodb
-  asdf install mongodb latest
-  asdf global mongodb latest
-
-  echo 'Installing scala...'
-  # Install scala version manager
-  asdf plugin-add scala
-  # Install the default version of scala
-  asdf install scala latest
-  asdf global scala latest
-
-  echo 'Installing mysql...'
-  # Install mysql version manager
-  asdf plugin-add mysql
-  # Install the default version of mysql
-  asdf install mysql latest
-  asdf global mysql latest
-
-  echo 'Installing postgres...'
-  # Install postgres version manager
-  asdf plugin-add postgres
-  # Install the default version of postgres
-  asdf install postgres latest
-  asdf global postgres latest
-
-  echo 'Installing elasticsearch...'
-  # Install elasticsearch version manager
-  asdf plugin-add elasticsearch
-  # Install the default version of elasticsearch
-  asdf install elasticsearch latest
-  asdf global elasticsearch latest
 fi
 
 vared -p 'Install personal apps? [y/n]: ' -c isPersonal
