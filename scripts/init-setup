@@ -165,7 +165,7 @@ if [[ $isGPG == 'y' ]]; then
     signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
     gpg --export-secret-keys $signkey >~/gpg-bu.asc
     echo 'gpg private saved to home. Back this up somewhere secure!'
-    read -s -k 'Press any key to continue...'
+    read -s -k '?Press any key to continue...'
   fi
 
   vared -p 'Import gpg? [y/n]: ' -c isImportGPG
@@ -182,7 +182,7 @@ if [[ $isGPG == 'y' ]]; then
 
   gpg --armor --export $signkey | pbcopy
   echo 'gpg public key has been copied to clipboard. Save this!'
-  read -s -k 'Press any key to continue...'
+  read -s -k '?Press any key to continue...'
 fi
 
 vared -p 'Configure git? [y/n]: ' -c isGit
