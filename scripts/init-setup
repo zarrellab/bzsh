@@ -136,6 +136,10 @@ if [[ $isNecassary == 'y' ]]; then
 
   echo 'Configuring gpg...'
   echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >>~/.gnupg/gpg-agent.conf
+  
+  echo 'Ensure docker is running before continuing!'
+  read -s -k '?Press any key to continue...'
+  docker login
 fi
 
 echo 'Creating ~/.zshprivate for private env variables...'
