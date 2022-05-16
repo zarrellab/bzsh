@@ -335,8 +335,8 @@ echo
 
 if [[ $isConfig == 'y' ]]; then
   echo 'Setting zsh as default user shell...'
-  sudo zsh -c "echo $(brew --prefix)/Cellar/zsh >> /etc/shells"
-  chsh -s $(brew --prefix)/Cellar/zsh
+  sudo zsh -c "echo $(brew --prefix)/bin/zsh >> /etc/shells"
+  chsh -s $(brew --prefix)/bin/zsh
 fi
 
 echo 'Finished! Please restart now!'
