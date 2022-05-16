@@ -264,7 +264,6 @@ if [[ $isRecommendedDev == 'y' ]]; then
     svgo \
     the-unarchiver \
     tldr \
-    vagrant \
     visual-studio-code \
     watch \
     watchman \
