@@ -25,7 +25,7 @@ fi
 # Apple ARM specifics
 if [[ $(uname -p) == 'arm' ]]; then
   echo 'Installing rosetta for compatability...'
-  sudo softwareupdate --install-rosetta
+  sudo softwareupdate --install-rosetta --agree-to-license
 fi
 
 vared -p 'Install necassary apps? [y/n]: ' -c isNecassary
