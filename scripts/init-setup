@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/sh
 
-vared -p 'Install zsh files? [y/n]: ' -c isZsh
+read -r -p 'Install zsh files? [y/n]: ' -c isZsh
 echo
 
 if [[ $isZsh == 'y' ]]; then
@@ -33,7 +33,7 @@ else
   brew_prefix=/usr/local
 fi
 
-vared -p 'Install necassary apps? [y/n]: ' -c isNecassary
+read -r -p 'Install necassary apps? [y/n]: ' -c isNecassary
 echo
 
 if [[ $isNecassary == 'y' ]]; then
@@ -148,7 +148,7 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.bzsh/runcoms/^README.md; do
     fi
   done
 
-vared -p 'Configure ssh? [y/n]: ' -c isSSH
+read -r -p 'Configure ssh? [y/n]: ' -c isSSH
 echo
 
 if [[ $isSSH == 'y' ]]; then
@@ -160,41 +160,41 @@ if [[ $isSSH == 'y' ]]; then
     IdentityFile ~/.ssh/id_ed25519" >>~/.ssh/config
 fi
 
-vared -p 'Configure gpg? [y/n]: ' -c isGPG
+read -r -p 'Configure gpg? [y/n]: ' -c isGPG
 echo
 
 if [[ $isGPG == 'y' ]]; then
-  vared -p 'Create new gpg? [y/n]: ' -c isNewGPG
+  read -r -p 'Create new gpg? [y/n]: ' -c isNewGPG
   echo
 
   if [[ $isNewGPG == 'y' ]]; then
     echo 'Generating gpg key...'
-    $brew_prefix/bin/gpg --full-generate-key
+    gpg --full-generate-key
 
     signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
-    $brew_prefix/bin/gpg --export-secret-keys $signkey >~/gpg-bu.asc
+    gpg --export-secret-keys $signkey >~/gpg-bu.asc
     echo 'gpg private saved to home. Back this up somewhere secure!'
     read -s -k '?Press any key to continue...'
     
-    $brew_prefix/bin/gpg --armor --export $signkey | pbcopy
+    gpg --armor --export $signkey | pbcopy
     echo 'gpg public key has been copied to clipboard. Save this!'
     read -s -k '?Press any key to continue...'
   fi
 
-  vared -p 'Import gpg? [y/n]: ' -c isImportGPG
+  read -r -p 'Import gpg? [y/n]: ' -c isImportGPG
   echo
 
   if [[ $isImportGPG == 'y' ]]; then
     echo 'Enter your gpg key file with path:'
     read gpg_file
 
-    $brew_prefix/bin/gpg --import $gpg_file
+    gpg --import $gpg_file
 
-    signkey=$($brew_prefix/bin/gpg --list-secret-keys --keyid-format long | $brew_prefix/bin/rg -Po 'sec.+\/\K(\S+)')
+    signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
   fi
 fi
 
-vared -p 'Configure git? [y/n]: ' -c isGit
+read -r -p 'Configure git? [y/n]: ' -c isGit
 echo
 
 if [[ $isGit == 'y' ]]; then
@@ -223,7 +223,7 @@ if [[ $isGit == 'y' ]]; then
   git config --list
 fi
 
-vared -p 'Install recommended developer apps? [y/n]: ' -c isRecommendedDev
+read -r -p 'Install recommended developer apps? [y/n]: ' -c isRecommendedDev
 echo
 
 if [[ $isRecommendedDev == 'y' ]]; then
@@ -283,7 +283,7 @@ if [[ $isRecommendedDev == 'y' ]]; then
   curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | zsh
 fi
 
-vared -p 'Install personal apps? [y/n]: ' -c isPersonal
+read -r -p 'Install personal apps? [y/n]: ' -c isPersonal
 echo
 
 if [[ $isPersonal == 'y' ]]; then
@@ -320,14 +320,14 @@ if [[ $isPersonal == 'y' ]]; then
   mas lucky pages
 fi
 
-vared -p 'Enable key repetition? [y/n]: ' -c isRep
+read -r -p 'Enable key repetition? [y/n]: ' -c isRep
 echo
 
 if [[ $isRep == 'y' ]]; then
   defaults write -g ApplePressAndHoldEnabled -bool false
 fi
 
-vared -p 'Setup zsh shell? [y/n]: ' -c isConfig
+read -r -p 'Setup zsh shell? [y/n]: ' -c isConfig
 echo
 
 if [[ $isConfig == 'y' ]]; then
