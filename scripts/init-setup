@@ -67,6 +67,7 @@ if [[ $isNecassary == 'y' ]]; then
     neovim \
     pinentry-mac \
     python \
+    ripgrep \
     shellcheck \
     subversion \
     tree \
@@ -256,7 +257,6 @@ if [[ $isRecommendedDev == 'y' ]]; then
     postman \
     quicklook-csv \
     quicklook-json \
-    ripgrep \
     rustup-init \
     sequel-pro \
     slack \
