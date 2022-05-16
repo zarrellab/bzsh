@@ -22,10 +22,15 @@ if [[ $isZsh == 'y' ]]; then
   done
 fi
 
+
 # Apple ARM specifics
 if [[ $(uname -p) == 'arm' ]]; then
   echo 'Installing rosetta for compatability...'
   sudo softwareupdate --install-rosetta --agree-to-license
+  
+  brew_prefix=/opt/homebrew
+else
+  brew_prefix=/usr/local
 fi
 
 vared -p 'Install necassary apps? [y/n]: ' -c isNecassary
@@ -36,11 +41,7 @@ if [[ $isNecassary == 'y' ]]; then
 
   echo 'Installing homebrew...'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  if [[ $(uname -p) == 'arm' ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  else
-    eval "$(/usr/local/bin/brew shellenv)"
-  fi
+  eval "$($brew_prefix/bin/brew shellenv)"
 
   brew update
 
@@ -168,14 +169,14 @@ if [[ $isGPG == 'y' ]]; then
 
   if [[ $isNewGPG == 'y' ]]; then
     echo 'Generating gpg key...'
-    gpg --full-generate-key
+    $brew_prefix/bin/gpg --full-generate-key
 
     signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
-    gpg --export-secret-keys $signkey >~/gpg-bu.asc
+    $brew_prefix/bin/gpg --export-secret-keys $signkey >~/gpg-bu.asc
     echo 'gpg private saved to home. Back this up somewhere secure!'
     read -s -k '?Press any key to continue...'
     
-    gpg --armor --export $signkey | pbcopy
+    $brew_prefix/bin/gpg --armor --export $signkey | pbcopy
     echo 'gpg public key has been copied to clipboard. Save this!'
     read -s -k '?Press any key to continue...'
   fi
@@ -187,9 +188,9 @@ if [[ $isGPG == 'y' ]]; then
     echo 'Enter your gpg key file with path:'
     read gpg_file
 
-    gpg --import $gpg_file
+    $brew_prefix/bin/gpg --import $gpg_file
 
-    signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
+    signkey=$($brew_prefix/bin/gpg --list-secret-keys --keyid-format long | $brew_prefix/bin/rg -Po 'sec.+\/\K(\S+)')
   fi
 fi
 
