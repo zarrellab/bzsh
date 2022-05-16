@@ -139,6 +139,13 @@ fi
 echo 'Creating ~/.zshprivate for private env variables...'
 touch ~/.zshprivate
 
+echo 'Loading runcoms...'
+for rcfile in "${ZDOTDIR:-$HOME}"/.bzsh/runcoms/^README.md; do
+    if [[ -s $HOME/.${rcfile:t} ]]; then
+      source $HOME/.${rcfile:t}
+    fi
+  done
+
 vared -p 'Configure ssh? [y/n]: ' -c isSSH
 echo
 
