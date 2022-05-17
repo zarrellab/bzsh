@@ -4,7 +4,7 @@ read -r -p 'Install zsh files? [y/n]: ' isZsh
 echo
 
 if [[ $isZsh == 'y' ]]; then
-  setopt EXTENDED_GLOB
+  shopt -s extglob
 
   backup_dir=${HOME}/zsh-backup-$(date +%s)
 
