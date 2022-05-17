@@ -106,6 +106,8 @@ alias casko='brew outdated --cask'
 alias casks='brew search --cask'
 alias casku='brew upgrade --cask'
 alias caskx='brew uninstall --cask'
+# Fix homebrew permissions
+alias brewP='sudo chown -R $(whoami) $(brew --prefix)/*'
 
 #
 # Tools
