@@ -15,6 +15,7 @@ if [[ $isNewGPG == 'y' ]]; then
   gpg --full-generate-key
 
   signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
+  export signkey
   gpg --export-secret-keys "$signkey" >~/gpg-bu.asc
   echo 'gpg private saved to home. Back this up somewhere secure!'
   read -r -p '?Press any key to continue...'
@@ -34,4 +35,5 @@ if [[ $isImportGPG == 'y' ]]; then
   gpg --import "$gpg_file"
 
   signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
+  export signkey
 fi
