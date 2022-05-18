@@ -14,7 +14,7 @@ if [[ $isNewGPG == 'y' ]]; then
   echo 'Generating gpg key...'
   gpg --full-generate-key
 
-  signkey=$(gpg --list-secret-keys --keyid-format long | rg -Po 'sec.+\/\K(\S+)')
+  signkey=$(gpg --list-secret-keys --keyid-format short | rg -Po 'sec.+\/\K(\S+)')
   export signkey
   gpg --export-secret-keys "$signkey" >~/gpg-bu.asc
   echo 'gpg private saved to home. Back this up somewhere secure!'
