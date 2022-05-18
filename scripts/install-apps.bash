@@ -170,5 +170,5 @@ echo 'Installing iterm utils...'
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | zsh
 
 echo 'Ensure docker is running before continuing!'
-read -s -k '?Press any key to continue...'
+read -r -p '?Press any key to continue...'
 docker login
