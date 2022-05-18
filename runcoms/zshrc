@@ -32,6 +32,28 @@ manpath=(
 )
 
 #
+# Tools
+#
+
+# iTerm: Terminal integration
+if [[ $TERM_PROGRAM == iTerm.app ]]; then
+  source "${HOME}/.iterm2_shell_integration.zsh"
+fi
+
+# fzf: Fuzzy Finder
+source ~/.fzf.zsh
+
+# Autojump: Quck directory navigation
+source "$(brew --prefix)/etc/profile.d/autojump.sh"
+
+# Direnv: Autoload .env files
+eval "$(direnv hook zsh)"
+
+# asdf: Tool version manager
+source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
+. ~/.asdf/plugins/java/set-java-home.zsh
+
+#
 # Completion
 #
 
@@ -108,28 +130,6 @@ alias casku='brew upgrade --cask'
 alias caskx='brew uninstall --cask'
 # Fix homebrew permissions
 alias brewP='sudo chown -R $(whoami) $(brew --prefix)/*'
-
-#
-# Tools
-#
-
-# iTerm: Terminal integration
-if [[ $TERM_PROGRAM == iTerm.app ]]; then
-  source "${HOME}/.iterm2_shell_integration.zsh"
-fi
-
-# fzf: Fuzzy Finder
-source ~/.fzf.zsh
-
-# Autojump: Quck directory navigation
-source "$(brew --prefix)/etc/profile.d/autojump.sh"
-
-# Direnv: Autoload .env files
-eval "$(direnv hook zsh)"
-
-# asdf: Tool version manager
-source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
-. ~/.asdf/plugins/java/set-java-home.zsh
 
 #
 # Zsh options
