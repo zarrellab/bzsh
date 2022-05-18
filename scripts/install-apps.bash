@@ -121,16 +121,18 @@ open /Applications/Docker.app
 echo 'Installing node...'
 # Install node version manager
 asdf plugin add nodejs
-# Default to system
-asdf global nodejs system
+# Install the default version of nodejs
+asdf install nodejs latest
+asdf global nodejs latest
 # Enable yarn
 corepack enable
 
 echo 'Installing java...'
 # Install java version manager
 asdf plugin-add java
-# Default to system
-asdf global java system
+# Install the default version of java
+asdf install java adoptopenjdk-jre-18.0.1+10
+asdf global java adoptopenjdk-jre-18.0.1+10
 
 echo 'Installing maven...'
 # Install maven version manager
