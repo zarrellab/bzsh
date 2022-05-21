@@ -57,10 +57,8 @@ else
   brew install google-chrome
   brew install helm
   brew install htop
-  brew install htop
   brew install imagemagick
   brew install imageoptim-cli
-  brew install iterm2
   brew install iterm2
   brew install jq
   brew install kubectx
