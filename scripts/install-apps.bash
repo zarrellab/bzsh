@@ -29,7 +29,6 @@ else
   brew tap homebrew/cask-fonts
   brew tap homebrew/cask-versions
 
-  brew install 1password
   brew install 1password-cli
   brew install aha
   brew install asdf
@@ -92,6 +91,7 @@ else
   brew install zsh
   brew install zsh-completions
 
+  brew install --cask 1password
   brew install --cask adobe-creative-cloud
   brew install --cask cinebench
   brew install --cask docker
@@ -126,7 +126,7 @@ fi
 echo 'Configuring related utils...'
 
 # Get docker started for later steps because it can take a while
-if (! command -v docker &>/dev/null); then
+if [ ! -x /Applications/Docker.app ]; then
   echo 'Error: docker not found!'
   echo 'Make sure docker is installed from brew!'
   exit 1
