@@ -13,8 +13,8 @@ fi
 if (! command -v brew &>/dev/null); then
   echo 'Installing homebrew...'
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$($brew_prefix/bin/brew shellenv)"
 fi
+  eval "$($brew_prefix/bin/brew shellenv)"
 
 if (! command -v brew &>/dev/null); then
   echo 'Error: homebrew is not found!'
