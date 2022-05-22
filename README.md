@@ -25,10 +25,15 @@ My custom configuration with setup scripts.
 
 1. Manually symlink each config from `./configs`
 
-```console
-cd ~/.bzsh/configs
-  ln -s CONFIG_PATH "~/.CONFIG_PATH"
-```
+    ```console
+    cd ~/.bzsh/configs
+    ```
+
+    Symlink command template:
+
+    ```console
+    ln -s CONFIG_PATH "~/.CONFIG_PATH"
+    ```
 
 1. Restart.
 
