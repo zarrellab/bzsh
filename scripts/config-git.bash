@@ -12,14 +12,14 @@ if [[ -z $signkey ]]; then
   read -r signkey
 fi
 
-git config --global user.name "$name"
-git config --global user.email "$email"
-git config --global core.editor nvim
-git config --global init.defaultBranch main
 git config --global commit.gpgsign true
-git config --global gpg.program "$(brew --prefix)"/bin/gpg
-git config --global user.signkey "$signkey"
+git config --global core.editor nvim
 git config --global core.excludesfile ~/.gitignore
+git config --global gpg.program "$(brew --prefix)"/bin/gpg
+git config --global init.defaultBranch main
+git config --global user.email "$email"
+git config --global user.name "$name"
+git config --global user.signkey "$signkey"
 
 echo '============================'
 echo 'Here is your git config:'
