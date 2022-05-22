@@ -147,6 +147,10 @@ unsetopt FLOW_CONTROL   # Disable start/stop characters in shell editor.
 unsetopt MENU_COMPLETE  # Do not autoselect the first completion entry.
 # Use caching to make completion for commands such as dpkg and apt usable.
 zstyle ':completion::complete:*' use-cache on
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # History
 HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}"  # The path to the history file.
