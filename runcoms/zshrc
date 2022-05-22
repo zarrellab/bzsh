@@ -143,8 +143,10 @@ setopt AUTO_PARAM_SLASH # If completed parameter is a directory, add a trailing 
 setopt COMPLETE_IN_WORD # Complete from both ends of a word.
 setopt EXTENDED_GLOB    # Needed for file modification glob modifiers with compinit.
 setopt PATH_DIRS        # Perform path search even on command names with slashes.
+unsetopt CASE_GLOB      # Ignore case
 unsetopt FLOW_CONTROL   # Disable start/stop characters in shell editor.
 unsetopt MENU_COMPLETE  # Do not autoselect the first completion entry.
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # Use caching to make completion for commands such as dpkg and apt usable.
 zstyle ':completion::complete:*' use-cache on
 # set descriptions format to enable group support
