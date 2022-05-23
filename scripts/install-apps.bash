@@ -153,7 +153,7 @@ else
 
   echo 'Installing java...'
   # Install java version manager
-  asdf plugin-add java
+  asdf plugin-add java https://github.com/zarrellab/asdf-java.git
   # Install the default version of java
   asdf install java adoptopenjdk-jre-18.0.1+10
   asdf global java adoptopenjdk-jre-18.0.1+10
