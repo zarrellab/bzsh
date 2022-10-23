@@ -1,8 +1,5 @@
 # Ensure no interfering rcs from OS
 setopt no_global_rcs
 
-# Init PATH
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-
 # Private envs
 source $HOME/.zshprivate
