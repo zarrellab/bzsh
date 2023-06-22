@@ -1,5 +1,2 @@
 # Ensure no interfering rcs from OS
 setopt no_global_rcs
-
-# Private envs
-source $HOME/.zshprivate

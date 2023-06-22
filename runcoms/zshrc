@@ -200,3 +200,6 @@ unsetopt BG_NICE            # Don't run all background jobs at a lower priority.
 unsetopt CHECK_JOBS         # Don't report on jobs when shell exit.
 unsetopt CLOBBER            # Do not overwrite existing files with > and >>. Use >! and >>! to bypass.
 unsetopt HUP                # Don't kill jobs on shell exit.
+
+# Source Private
+source $HOME/.zshprivate
