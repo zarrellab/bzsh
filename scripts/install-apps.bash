@@ -24,8 +24,6 @@ else
   brew update
 
   brew tap chrokh/tap
-  brew tap homebrew/cask
-  brew tap homebrew/cask-drivers
   brew tap homebrew/cask-fonts
   brew tap homebrew/cask-versions
 
