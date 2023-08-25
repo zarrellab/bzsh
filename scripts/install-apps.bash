@@ -73,13 +73,14 @@ else
   brew install rustup-init
   brew install sequel-pro
   brew install shellcheck
+  brew install siril
   brew install slack
+  brew install speedtest-cli
   brew install steam
   brew install subversion
   brew install svgo
   brew install the-unarchiver
   brew install tldr
-  brew install transmission-cli
   brew install tree
   brew install visual-studio-code
   brew install watch
@@ -91,14 +92,18 @@ else
 
   brew install --cask 1password
   brew install --cask adobe-creative-cloud
+  brew install --cask brave-browser
   brew install --cask cinebench
   brew install --cask docker
+  brew install --cask elmedia-player
   brew install --cask monitorcontrol
   brew install --cask mouse-fix
-  brew install --cask obsidian
+  brew install --cask notion
   brew install --cask rectangle
-  brew install --cask transmission
+  brew install --cask starnet-plus-plus
+  brew install --cask stellarium
   brew install --cask vlc
+  brew install --cask xnviewmp
   brew install --cask zoom
 
   # install fzf completions
@@ -114,11 +119,16 @@ if (! command -v mas &>/dev/null); then
   exit 1
 else
   echo 'Installing App Store apps...'
+  mas lucky "1password for safari"
+  mas lucky "skysafari 6 plus"
   mas lucky amphetamine
+  mas lucky asiair
   mas lucky keynote
   mas lucky nordvpn
   mas lucky numbers
   mas lucky pages
+  mas lucky quickfits
+  mas lucky victronconnect
 fi
 
 echo 'Configuring related utils...'
