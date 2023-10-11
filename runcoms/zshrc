@@ -57,9 +57,6 @@ source ~/.fzf.zsh
 # Autojump: Quck directory navigation
 source "$(brew --prefix)/etc/profile.d/autojump.sh"
 
-# Direnv: Autoload .env files
-eval "$(direnv hook zsh)"
-
 # asdf: Tool version manager
 source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 . ~/.asdf/plugins/java/set-java-home.zsh
