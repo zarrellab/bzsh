@@ -82,25 +82,25 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 #
 
 # Activate Zinit
-source "$(brew --prefix)/opt/zinit/zinit.zsh"
+source ~/.local/share/zinit/zinit.git/zinit.zsh
 
 # Zinit Plugins
-zinit for \
-  light-mode atload'source ~/.p10k.zsh' romkatv/powerlevel10k \
-  light-mode zdharma-continuum/fast-syntax-highlighting \
-  light-mode zsh-users/zsh-history-substring-search \
-  light-mode zsh-users/zsh-autosuggestions \
-  light-mode momo-lab/zsh-replace-multiple-dots \
-  light-mode hlissner/zsh-autopair \
-  light-mode zpm-zsh/ls \
-  light-mode zpm-zsh/material-colors \
-  light-mode chitoku-k/fzf-zsh-completions \
-  light-mode Aloxaf/fzf-tab \
-  light-mode wfxr/emoji-cli \
-  light-mode from'gh-r' as'program' sei40kr/fast-alias-tips-bin \
-  light-mode sei40kr/zsh-fast-alias-tips \
-  light-mode pick'zsh-bench' as'program' romkatv/zsh-bench \
-  light-mode lucid wait'[[ -s .git ]]' unload'[[ ! -s .git ]]' wfxr/forgit \
+zinit light-mode for \
+  atload'source ~/.p10k.zsh' romkatv/powerlevel10k \
+  zdharma-continuum/fast-syntax-highlighting \
+  zsh-users/zsh-history-substring-search \
+  zsh-users/zsh-autosuggestions \
+  momo-lab/zsh-replace-multiple-dots \
+  hlissner/zsh-autopair \
+  zpm-zsh/ls \
+  zpm-zsh/material-colors \
+  chitoku-k/fzf-zsh-completions \
+  Aloxaf/fzf-tab \
+  wfxr/emoji-cli \
+  from'gh-r' as'program' sei40kr/fast-alias-tips-bin \
+  sei40kr/zsh-fast-alias-tips \
+  pick'zsh-bench' as'program' romkatv/zsh-bench \
+  lucid wait'[[ -s .git ]]' unload'[[ ! -s .git ]]' wfxr/forgit
 
 # TODO: Replace prezto modules
 # zinit snippet PZTM::ssh

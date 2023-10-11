@@ -86,7 +86,6 @@ else
   brew install watch
   brew install watchman
   brew install wget
-  brew install zinit
   brew install zsh
   brew install zsh-completions
 
@@ -226,4 +225,9 @@ else
   fi
 
   docker login
+fi
+
+if (! command -v zinit &>/dev/null); then
+  echo 'Installing zinit...'
+  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 fi
