@@ -44,10 +44,5 @@ tags
 # Persistent undo
 [._]*.un~
 
-### VisualStudioCode ###
-.vscode/
-.vs/
-*.code-workspace
-
 # Local History for Visual Studio Code
 .history/
