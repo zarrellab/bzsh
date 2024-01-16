@@ -140,6 +140,18 @@ alias caskx='brew uninstall --cask'
 alias brewP='sudo chown -R $(whoami) $(brew --prefix)/*'
 
 #
+# Functions
+#
+
+# Port killer
+# kill_port <port>
+function kill_port {
+    readonly port=${1:?"The port must be specified."}
+
+    lsof -i tcp:"$port" | grep LISTEN | awk '{print $2}'
+}
+
+#
 # Zsh options
 #
 
