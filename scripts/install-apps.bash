@@ -34,6 +34,7 @@ else
   brew install awscli
   brew install bat
   brew install brotli
+  brew install cargo-nextest
   brew install cmake
   brew install coreutils
   brew install curl
@@ -58,6 +59,7 @@ else
   brew install imageoptim-cli
   brew install iterm2
   brew install jq
+  brew install k6
   brew install kubectx
   brew install mas
   brew install microsoft-edge
@@ -121,7 +123,6 @@ else
   mas lucky "1password for safari"
   mas lucky "skysafari 6 plus"
   mas lucky amphetamine
-  mas lucky asiair
   mas lucky keynote
   mas lucky nordvpn
   mas lucky numbers
