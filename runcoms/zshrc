@@ -41,6 +41,11 @@ manpath=(
   "$(brew --prefix)/opt/coreutils/libexec/gnuman" # GNU utils
   $manpath
 )
+# Siril CLI
+path=(
+  "/Applications/Siril.app/Contents/MacOS"
+  $path
+)
 
 #
 # Tools
