@@ -101,6 +101,7 @@ else
   brew install --cask mouse-fix
   brew install --cask notion
   brew install --cask rectangle
+  brew install --cask sf-symbols
   brew install --cask starnet-plus-plus
   brew install --cask stellarium
   brew install --cask vlc
