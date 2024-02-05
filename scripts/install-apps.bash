@@ -150,6 +150,12 @@ if (! command -v asdf &>/dev/null); then
   echo 'Make sure asdf is installed from brew!'
   exit 1
 else
+  echo 'Installing direnv plugin...'
+  # Install direnv plugin
+  asdf plugin add direnv
+  # Run setup
+  asdf direnv setup --shell zsh --version system
+
   echo 'Installing node...'
   # Install node version manager
   asdf plugin add nodejs
