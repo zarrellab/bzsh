@@ -29,7 +29,6 @@ else
 
   brew install 1password-cli
   brew install aha
-  brew install asdf
   brew install autojump
   brew install awscli
   brew install bat
@@ -63,6 +62,7 @@ else
   brew install kubectx
   brew install mas
   brew install microsoft-edge
+  brew install mise
   brew install neovim
   brew install pigz
   brew install pinentry-mac
@@ -146,62 +146,40 @@ else
   fi
 fi
 
-if (! command -v asdf &>/dev/null); then
-  echo 'Error: asdf not found!'
-  echo 'Make sure asdf is installed from brew!'
+if (! command -v mise &>/dev/null); then
+  echo 'Error: mise not found!'
+  echo 'Make sure mise version manager is installed from brew!'
   exit 1
 else
-  echo 'Installing direnv plugin...'
-  # Install direnv plugin
-  asdf plugin add direnv
-  # Run setup
-  asdf direnv setup --shell zsh --version system
+  echo 'Installing mise completions...'
+  mise use -g usage
 
   echo 'Installing node...'
-  # Install node version manager
-  asdf plugin add nodejs
-  # Install the default version of nodejs
-  asdf install nodejs latest
-  asdf global nodejs latest
+  mise use -g node
+  npm i -g npm
   # Enable yarn
   corepack enable
 
+  echo 'Installing bun...'
+  mise use -g bun
+
   echo 'Installing java...'
-  # Install java version manager
-  asdf plugin-add java https://github.com/zarrellab/asdf-java.git
-  # Install the default version of java
-  asdf install java adoptopenjdk-jre-18.0.1+10
-  asdf global java adoptopenjdk-jre-18.0.1+10
+  mise use -g java
 
   echo 'Installing maven...'
-  # Install maven version manager
-  asdf plugin-add maven
-  # Install the default version of maven
-  asdf install maven latest
-  asdf global maven latest
+  mise plugins i maven
+  mise use -g maven
 
   echo 'Installing python...'
-  # Install python version manager
-  asdf plugin-add python
-  # Install the default version of python
-  asdf install python latest
-  asdf global python latest
+  mise use -g python
   # Upgrade pip
   pip3 install --upgrade pip
 
-  echo 'Installing rust...'
-  # Install rust version manager
-  asdf plugin-add rust
-  # Install the default version of rust
-  asdf install rust latest
-  asdf global rust latest
+  echo 'Installing ruby...'
+  mise use -g ruby
 
-  echo 'Installing scala...'
-  # Install scala version manager
-  asdf plugin-add scala
-  # Install the default version of scala
-  asdf install scala latest
-  asdf global scala latest
+  echo 'Installing rust...'
+  mise use -g rust
 fi
 
 if (! command -v gpg &>/dev/null); then
