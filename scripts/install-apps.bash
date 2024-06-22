@@ -49,7 +49,7 @@ else
   brew install gawk
   brew install gifox
   brew install git
-  brew install gnupg
+  brew install gpg
   brew install gnutls
   brew install google-chrome
   brew install helm
@@ -180,15 +180,6 @@ else
 
   echo 'Installing rust...'
   mise use -g rust
-fi
-
-if (! command -v gpg &>/dev/null); then
-  echo 'Error: gpg not found!'
-  echo 'Make sure gpg is installed from brew!'
-  exit 1
-else
-  echo 'Configuring gpg...'
-  echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >>~/.gnupg/gpg-agent.conf
 fi
 
 echo 'Installing iterm utils...'
