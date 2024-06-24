@@ -10,6 +10,3 @@ fi
 
 # Security
 export GPG_TTY=$(tty) # Prevents GPG error
-
-# Tool version manager IDE shims
-eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
