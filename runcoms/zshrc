@@ -63,7 +63,7 @@ source ~/.fzf.zsh
 source "$(brew --prefix)/etc/profile.d/autojump.sh"
 
 # Tool version manager
-eval "$($(brew --prefix)/bin/mise activate zsh --shims)"
+eval "$(mise activate zsh --shims)"
 
 #
 # Completion
