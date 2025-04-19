@@ -1,13 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# Make direnv play nice with instant prompt: https://github.com/romkatv/powerlevel10k#how-do-i-initialize-direnv-when-using-instant-prompt
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Direnv: Autoload .env files
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
@@ -90,7 +80,6 @@ source ~/.local/share/zinit/zinit.git/zinit.zsh
 
 # Zinit Plugins
 zinit light-mode for \
-  atload'source ~/.p10k.zsh' romkatv/powerlevel10k \
   zdharma-continuum/fast-syntax-highlighting \
   zsh-users/zsh-history-substring-search \
   zsh-users/zsh-autosuggestions \
@@ -224,3 +213,6 @@ unsetopt HUP                # Don't kill jobs on shell exit.
 
 # Source Private
 source $HOME/.zshprivate
+
+# Starship: Prompt
+eval "$(starship init zsh)"

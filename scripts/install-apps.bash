@@ -78,6 +78,7 @@ else
   brew install siril
   brew install slack
   brew install speedtest-cli
+  brew install starship
   brew install steam
   brew install subversion
   brew install svgo
