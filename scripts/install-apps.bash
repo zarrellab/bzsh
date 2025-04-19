@@ -27,82 +27,80 @@ else
   brew tap homebrew/cask-fonts
   brew tap homebrew/cask-versions
 
-  brew install 1password-cli
   brew install aha
   brew install autojump
   brew install awscli
   brew install bat
+  brew install bash
   brew install brotli
   brew install cargo-nextest
   brew install cmake
   brew install coreutils
   brew install curl
   brew install direnv
-  brew install discord
-  brew install docker-slim
-  brew install epic-games
-  brew install figma
-  brew install firefox
-  brew install firefox-developer-edition
   brew install font-sauce-code-pro-nerd-font
   brew install fzf
   brew install gawk
-  brew install gifox
   brew install git
   brew install gpg
   brew install gnutls
-  brew install google-chrome
   brew install helm
   brew install htop
+  brew install hyperfine
+  brew install gifsicle
   brew install imagemagick
   brew install imageoptim-cli
-  brew install iterm2
   brew install jq
   brew install k6
   brew install kubectx
   brew install mas
-  brew install microsoft-edge
   brew install mise
   brew install neovim
   brew install pigz
   brew install pinentry-mac
   brew install pipenv
-  brew install postman
   brew install python
   brew install quicklook-csv
   brew install quicklook-json
   brew install ripgrep
   brew install rustup-init
-  brew install sequel-pro
   brew install shellcheck
-  brew install siril
-  brew install slack
   brew install speedtest-cli
   brew install starship
-  brew install steam
   brew install subversion
   brew install svgo
-  brew install the-unarchiver
   brew install tldr
   brew install tree
-  brew install visual-studio-code
   brew install watch
   brew install watchman
   brew install wget
   brew install zsh
   brew install zsh-completions
 
+  brew install --cask steam
+  brew install --cask slack
+  brew install --cask siril
+  brew install --cask insomnia
+  brew install --cask iterm2
+  brew install --cask google-chrome
+  brew install --cask gifox
+  brew install --cask discord
+  brew install --cask epic-games
+  brew install --cask figma
+  brew install --cask firefox
+  brew install --cask firefox@developer-edition
   brew install --cask 1password
+  brew install --cask visual-studio-code
+  brew install --cask 1password-cli
   brew install --cask adobe-creative-cloud
+  brew install --cask app-cleaner
   brew install --cask brave-browser
-  brew install --cask cinebench
+  brew install --cask chatgpt
   brew install --cask docker
-  brew install --cask elmedia-player
   brew install --cask monitorcontrol
-  brew install --cask mouse-fix
-  brew install --cask notion
-  brew install --cask rectangle
   brew install --cask sf-symbols
+  brew install --cask quicklook-csv
+  brew install --cask quicklook-json
   brew install --cask starnet-plus-plus
   brew install --cask stellarium
   brew install --cask vlc
