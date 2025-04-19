@@ -2,7 +2,7 @@
 
 # Apple ARM specifics
 if [[ $(uname -p) == 'arm' ]]; then
-  echo 'Installing rosetta for compatability...'
+  echo 'Installing rosetta for compatibility...'
   sudo softwareupdate --install-rosetta --agree-to-license
 
   brew_prefix=/opt/homebrew
