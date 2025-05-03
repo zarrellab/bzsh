@@ -30,8 +30,9 @@ else
   brew install aha
   brew install autojump
   brew install awscli
-  brew install bat
   brew install bash
+  brew install bashdb
+  brew install bat
   brew install brotli
   brew install cargo-nextest
   brew install cmake
@@ -41,13 +42,13 @@ else
   brew install font-sauce-code-pro-nerd-font
   brew install fzf
   brew install gawk
+  brew install gifsicle
   brew install git
-  brew install gpg
   brew install gnutls
+  brew install gpg
   brew install helm
   brew install htop
   brew install hyperfine
-  brew install gifsicle
   brew install imagemagick
   brew install imageoptim-cli
   brew install jq
@@ -65,6 +66,7 @@ else
   brew install ripgrep
   brew install rustup-init
   brew install shellcheck
+  brew install shfmt
   brew install speedtest-cli
   brew install starship
   brew install subversion
@@ -77,32 +79,32 @@ else
   brew install zsh
   brew install zsh-completions
 
-  brew install --cask steam
-  brew install --cask slack
-  brew install --cask siril
-  brew install --cask insomnia
-  brew install --cask iterm2
-  brew install --cask google-chrome
-  brew install --cask gifox
-  brew install --cask discord
-  brew install --cask epic-games
-  brew install --cask figma
-  brew install --cask firefox
-  brew install --cask firefox@developer-edition
   brew install --cask 1password
-  brew install --cask visual-studio-code
   brew install --cask 1password-cli
   brew install --cask adobe-creative-cloud
   brew install --cask app-cleaner
   brew install --cask brave-browser
   brew install --cask chatgpt
+  brew install --cask discord
   brew install --cask docker
+  brew install --cask epic-games
+  brew install --cask figma
+  brew install --cask firefox
+  brew install --cask firefox@developer-edition
+  brew install --cask gifox
+  brew install --cask google-chrome
+  brew install --cask insomnia
+  brew install --cask iterm2
   brew install --cask monitorcontrol
-  brew install --cask sf-symbols
   brew install --cask quicklook-csv
   brew install --cask quicklook-json
+  brew install --cask sf-symbols
+  brew install --cask siril
+  brew install --cask slack
   brew install --cask starnet-plus-plus
+  brew install --cask steam
   brew install --cask stellarium
+  brew install --cask visual-studio-code
   brew install --cask vlc
   brew install --cask xnviewmp
   brew install --cask zoom
