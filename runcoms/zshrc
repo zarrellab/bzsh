@@ -109,7 +109,6 @@ zinit light-mode for \
 
 alias v='nvim'
 alias vs='code'
-alias brewU='brew update && brew upgrade && brew upgrade --cask && brew cleanup'
 alias brewc='brew cleanup'
 alias brewi='brew install'
 alias brewL='brew leaves'
@@ -124,8 +123,12 @@ alias casko='brew outdated --cask'
 alias casks='brew search --cask'
 alias casku='brew upgrade --cask'
 alias caskx='brew uninstall --cask'
+# Brew updates
+alias brewU='brew update && brew upgrade && brew upgrade --cask && brew cleanup'
 # Fix homebrew permissions
 alias brewP='sudo chown -R $(whoami) $(brew --prefix)/*'
+# Update Brewfile
+alias brewD='brew bundle dump --file=~/.bzsh/scripts/support/Brewfile --cleanup --no-vscode --force'
 
 #
 # Functions
