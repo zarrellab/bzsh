@@ -8,7 +8,7 @@ if (! command -v brew &>/dev/null); then
 fi
 eval "$($brew_prefix/bin/brew shellenv)"
 
-brew bundle --file=./support/Brewfile
+brew bundle install --file=./support/Brewfile
 # install fzf completions and key bindings only if not already present
 if [ ! -f ~/.fzf.zsh ]; then
   echo "fzf init files missing — installing..."
