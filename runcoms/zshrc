@@ -9,12 +9,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 #
 
 # Init
-# ARM and Intel have differing locations
-if [[ $(uname -p) == 'arm' ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-  eval "$(/usr/local/Homebrew/bin/brew shellenv)"
-fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Flags
 export LDFLAGS="-L$(brew --prefix)/opt/curl/lib"                  # Curl
