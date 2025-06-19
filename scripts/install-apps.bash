@@ -20,17 +20,14 @@ brew doctor
 
 echo 'Configuring related utils...'
 
-# Get docker started for later steps because it can take a while
-if [ ! -x /Applications/Docker.app ]; then
-  echo 'Error: docker not found!'
-  echo 'Make sure docker is installed from brew!'
-  exit 1
-else
-  if (! docker info &>/dev/null); then
-    echo "Launching Docker..."
-    open /Applications/Docker.app
+# Helper for mise installs
+function try_mise_use() {
+  lang=$1
+  echo "Installing $lang..."
+  if ! mise use -g "$lang"; then
+    echo "⚠️  Failed to install $lang via mise"
   fi
-fi
+}
 
 if (! command -v mise &>/dev/null); then
   echo 'Error: mise not found!'
@@ -40,32 +37,19 @@ else
   echo 'Installing mise completions...'
   mise use -g usage
 
-  echo 'Installing node...'
-  mise use -g node
+  try_mise_use node
   npm i -g npm
   # Enable yarn
   corepack enable
 
-  echo 'Installing bun...'
-  mise use -g bun
-
-  echo 'Installing java...'
-  mise use -g java
-
-  echo 'Installing maven...'
+  try_mise_use bun
+  try_mise_use java
   mise plugins i maven
-  mise use -g maven
-
-  echo 'Installing python...'
-  mise use -g python
-  # Upgrade pip
+  try_mise_use maven
+  try_mise_use python
   pip3 install --upgrade pip
-
-  echo 'Installing ruby...'
-  mise use -g ruby
-
-  echo 'Installing rust...'
-  mise use -g rust
+  try_mise_use ruby
+  try_mise_use rust
 fi
 
 echo 'Installing iterm utils...'
