@@ -16,122 +16,15 @@ if (! command -v brew &>/dev/null); then
 fi
 eval "$($brew_prefix/bin/brew shellenv)"
 
-if (! command -v brew &>/dev/null); then
-  echo 'Error: homebrew is not found!'
-  echo 'Make sure homebrew is installed and in path!'
-  exit 1
-else
-  brew update
-
-  brew tap chrokh/tap
-  brew tap homebrew/cask-fonts
-  brew tap homebrew/cask-versions
-
-  brew install aha
-  brew install autojump
-  brew install awscli
-  brew install bash
-  brew install bashdb
-  brew install bat
-  brew install brotli
-  brew install cargo-nextest
-  brew install cmake
-  brew install coreutils
-  brew install curl
-  brew install direnv
-  brew install font-sauce-code-pro-nerd-font
-  brew install fzf
-  brew install gawk
-  brew install gifsicle
-  brew install git
-  brew install gnutls
-  brew install gpg
-  brew install helm
-  brew install htop
-  brew install hyperfine
-  brew install imagemagick
-  brew install imageoptim-cli
-  brew install jq
-  brew install k6
-  brew install kubectx
-  brew install mas
-  brew install mise
-  brew install neovim
-  brew install pigz
-  brew install pinentry-mac
-  brew install pipenv
-  brew install python
-  brew install quicklook-csv
-  brew install quicklook-json
-  brew install ripgrep
-  brew install rustup-init
-  brew install shellcheck
-  brew install shfmt
-  brew install speedtest-cli
-  brew install starship
-  brew install subversion
-  brew install svgo
-  brew install tldr
-  brew install tree
-  brew install watch
-  brew install watchman
-  brew install wget
-  brew install zsh
-  brew install zsh-completions
-
-  brew install --cask 1password
-  brew install --cask 1password-cli
-  brew install --cask adobe-creative-cloud
-  brew install --cask app-cleaner
-  brew install --cask brave-browser
-  brew install --cask chatgpt
-  brew install --cask discord
-  brew install --cask docker
-  brew install --cask epic-games
-  brew install --cask figma
-  brew install --cask firefox
-  brew install --cask firefox@developer-edition
-  brew install --cask gifox
-  brew install --cask google-chrome
-  brew install --cask insomnia
-  brew install --cask iterm2
-  brew install --cask monitorcontrol
-  brew install --cask quicklook-csv
-  brew install --cask quicklook-json
-  brew install --cask sf-symbols
-  brew install --cask siril
-  brew install --cask slack
-  brew install --cask starnet-plus-plus
-  brew install --cask steam
-  brew install --cask stellarium
-  brew install --cask visual-studio-code
-  brew install --cask vlc
-  brew install --cask xnviewmp
-  brew install --cask zoom
-
-  # install fzf completions
-  "$(brew --prefix)"/opt/fzf/install
-
-  echo 'Checking for issues...'
-  brew doctor
+brew bundle --file=./support/Brewfile
+# install fzf completions and key bindings only if not already present
+if [ ! -f ~/.fzf.zsh ]; then
+  echo "fzf init files missing — installing..."
+  "$(brew --prefix)"/opt/fzf/install --key-bindings --completion --no-update-rc
 fi
 
-if (! command -v mas &>/dev/null); then
-  echo 'Error: cannot install apps from App Store'
-  echo 'Make sure mas is installed from brew!'
-  exit 1
-else
-  echo 'Installing App Store apps...'
-  mas lucky "1password for safari"
-  mas lucky "skysafari 6 plus"
-  mas lucky amphetamine
-  mas lucky keynote
-  mas lucky nordvpn
-  mas lucky numbers
-  mas lucky pages
-  mas lucky quickfits
-  mas lucky victronconnect
-fi
+echo 'Checking for issues...'
+brew doctor
 
 echo 'Configuring related utils...'
 
