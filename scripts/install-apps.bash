@@ -57,23 +57,18 @@ echo 'Installing iterm utils...'
 echo 'Installing iTerm shell integration...'
 curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | zsh
 
-if (! command -v docker &>/dev/null); then
-  echo 'Error: docker not found!'
-  echo 'Make sure docker is installed from brew!'
-  exit 1
-else
-  if (! docker info &>/dev/null); then
-    echo "Launching Docker..."
-    open /Applications/Docker.app
+# Start Docker if not running
+if (! docker info &>/dev/null); then
+  echo "Launching Docker..."
+  open -a Docker
+  sleep 10
+  while (! docker info &>/dev/null); do
+    echo "Waiting for Docker to launch..."
     sleep 10
-    while (! docker info &>/dev/null); do
-      echo "Waiting for Docker to launch..."
-      sleep 10
-    done
-  fi
-
-  docker login
+  done
 fi
+
+docker login
 
 if (! command -v zinit &>/dev/null); then
   echo 'Installing zinit...'
