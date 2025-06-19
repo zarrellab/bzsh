@@ -54,7 +54,8 @@ fi
 
 echo 'Installing iterm utils...'
 # iterm shell integration
-curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | zsh
+echo 'Installing iTerm shell integration...'
+curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | zsh
 
 if (! command -v docker &>/dev/null); then
   echo 'Error: docker not found!'
